@@ -1,0 +1,24 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[dev]
+  command = "npm run dev"
+  targetPort = 5173
+  port = 8888
+  publish = "dist"
+  functions = "netlify/functions"
+
+[functions]
+  # Local onde as funções estão armazenadas
+  directory = "netlify/functions"
+
+[functions."*"]
+  # Aumentar o timeout para 30 segundos (o padrão é 10)
+  timeout = 30
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
